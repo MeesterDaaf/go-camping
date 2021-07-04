@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Trip;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,12 @@ class TripController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'active_trips' => Trip::where('status', 'active')->get(),
+            'deactive_trips' => Trip::where('status', 'deactive')->get()
+        ];
+
+        return view('trips.index', $data);
     }
 
     /**
@@ -57,7 +63,12 @@ class TripController extends Controller
      */
     public function edit(Trip $trip)
     {
-        //
+        $data = [
+            'trip'          => $trip,
+            'categories'    => Category::where('status', 'active')->get()
+        ];
+
+        return view('trips.edit', $data);
     }
 
     /**
