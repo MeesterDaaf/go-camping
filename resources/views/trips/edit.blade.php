@@ -20,7 +20,7 @@
                                 <label>Welke categorieen kies je</label>
                                 <div class="flex flex-col mt-2">
                                     @foreach ($categories as $category)
-                                    <div class="category-item">
+                                    <div class="category-item mt-4">
                                         @livewire('show-categories', [
                                             'category'=> $category],  key($category->id))
                                         <label class="form-check-label" for="category_{{$category->id}}">{{$category->title}}</label>

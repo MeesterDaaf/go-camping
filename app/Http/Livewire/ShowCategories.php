@@ -7,17 +7,11 @@ use Livewire\Component;
 
 class ShowCategories extends Component
 {
-
-    // public $categories;
-    public $cats = [];
-
     public $category;
 
     public $trip = null;
 
     public bool $isActive;
-
-    public $value;
 
     public function mount(Request $request)
     {
