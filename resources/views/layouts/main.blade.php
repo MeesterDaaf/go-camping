@@ -11,6 +11,7 @@
         <script src="{{ mix('dist/js/app.js') }}"></script>
         <!-- END: JS Assets-->
 
+        @livewireScripts
         @yield('script')
     </body>
 @endsection

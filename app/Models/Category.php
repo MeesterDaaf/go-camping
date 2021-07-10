@@ -13,4 +13,9 @@ class Category extends Model
     {
         return $this->hasMany(Item::class);
     }
+
+    public function trips()
+    {
+        return $this->belongsToMany(Trip::class, 'categories_trips')->withPivot(['category_id', 'trip_id']);
+    }
 }

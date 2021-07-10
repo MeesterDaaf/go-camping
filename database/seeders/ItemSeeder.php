@@ -24,6 +24,14 @@ class ItemSeeder extends Seeder
 
         DB::table('items')->insert(
             [
+                'title'         => 'borden',
+                'category_id'   => 1,
+                'status'        => 'active'
+            ]
+        );
+
+        DB::table('items')->insert(
+            [
                 'title'         => 'haringen',
                 'category_id'   => 2,
                 'status'        => 'active'

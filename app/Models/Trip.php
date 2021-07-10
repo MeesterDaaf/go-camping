@@ -13,4 +13,9 @@ class Trip extends Model
     {
         return $this->belongsToMany(Item::class, 'packages');
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class, 'categories_trips');
+    }
 }

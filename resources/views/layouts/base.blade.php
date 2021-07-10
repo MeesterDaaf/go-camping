@@ -12,6 +12,8 @@
     
     @yield('head')
 
+    @livewireStyles
+
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="{{ mix('dist/css/app.css') }}" />
     
