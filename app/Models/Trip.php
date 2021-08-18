@@ -11,11 +11,11 @@ class Trip extends Model
 
     public function items()
     {
-        return $this->belongsToMany(Item::class, 'packages');
+        return $this->belongsToMany(Item::class, 'packages')->withTimestamps();
     }
 
     public function categories()
     {
-        return $this->belongsToMany(Category::class, 'categories_trips');
+        return $this->belongsToMany(Category::class, 'categories_trips')->withTimestamps();
     }
 }

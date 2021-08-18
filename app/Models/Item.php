@@ -11,11 +11,11 @@ class Item extends Model
 
     public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class)->withTimestamps();
     }
 
     public function trips()
     {
-        return $this->belongsToMany(Trip::class, 'packages');
+        return $this->belongsToMany(Trip::class, 'packages')->withTimestamps();
     }
 }
