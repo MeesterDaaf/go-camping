@@ -15,17 +15,16 @@
             <div id="catogory-select" class="p-2">
                 <div class="contains">
                     <div id="radio" class="p-5">
-                        <div class="preview">
-                            <div class="mt-1">
-                                <label>Welke categorieen kies je</label>
-                                <div class="flex flex-col mt-2">
-                                    @foreach ($categories as $category)
-                                    <div class="category-item mt-4">
-                                        @livewire('show-categories', [
-                                            'category'=> $category],  key($category->id))
-                                        <label class="form-check-label" for="category_{{$category->id}}">{{$category->title}}</label>
-                                    </div> 
-                                    @endforeach
+                        <div class="preview grid">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="existing-cats">
+                                    <label>Welke categorieen kies je</label>
+                                    <div class="flex flex-col mt-2">
+                                        @livewire('list-all-categories', ['categories'=> $categories, 'trip'=> $trip])
+                                    </div>
+                                </div>
+                                <div class="new-cats w-1/2">
+                                    @livewire('category-form', ['trip'=> $trip])
                                 </div>
                             </div>
                         </div>
@@ -33,6 +32,7 @@
                 </div>
             </div>
         </div>
+       
         <div class="intro-y box mt-5">
             <div id="item-select" class="p-2">
                 <div class="contains">
@@ -40,8 +40,8 @@
                         <div class="preview">
                             <div class="mt-1">
                                 <label>Welke spullen kies je</label>
-                                <div class="flex flex-col sm:flex-row mt-2">
-                                    @livewire('show-items')
+                                <div class="container overflow-x-hidden">
+                                    @livewire('show-items',['trip'=> $trip])
                                 </div>
                             </div>
                         </div>
