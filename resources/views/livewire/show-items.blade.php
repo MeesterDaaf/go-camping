@@ -1,36 +1,32 @@
 <div>
-    {{-- @dd($items) --}}
-    @forelse ($categories as $category)
-        <div class="form-check mr-2">
-            <div class="flex flex-col">
-                {{-- <h4 class="font-medium text-base mr-auto">{{$category->title}}</h4> --}}
-                @forelse ($category->items->sortDesc() as $item)
-                    
-                    <div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
-                        <input 
-                            id = "item_{{$item->id}}" 
-                            class = "focus:outline-none toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursur-pointer" 
-                            type = "checkbox" 
-                            name = "items" 
-                            value = "{{$item->id}}" 
-                            {{-- wire:model = "isActive" --}}
-                        >
-                        <label 
-                            class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"
-                            for="item_{{$item->id}}">
-                            
-                        </label>    
-                        {{$item->title}}   
+    <div class="flex flex-wrap overflow-hidden">
 
-                        {{-- <input type="checkbox" name="items" id="" >    
-                        <label class="form-check-label" for="item_{{$item->id}}">{{$item->title}}</label> --}}
+        @forelse ($categories as $category)
+            <div class="w-1/3 overflow-hidden">
+
+                <h5 class="font-medium text-base mr-auto mb-6">{{$category->title}}</h5>
+                <div class="form-check mr-2">
+                    <div class="flex flex-col">
+                        @livewire('new-item', [ 'category' => $category], key('new-category-item-'. $category->id))
+                        {{-- <h4 class="font-medium text-base mr-auto">{{$category->title}}</h4> --}}
+                        @forelse ($category->items->sortDesc() as $item)
+                            <div class="item mt-4">
+                                @livewire('pack-items', [
+                                    'item' => $item,
+                                    'trip' => $trip
+                                ], key('item_'.$item->id))
+                                <label class="form-check-label" for="item_{{$item->id}}">{{$item->title}}</label>
+                            </div>
+                        @empty
+                                
+                        @endforelse
+                            {{-- @livewire('new-item', ['user' => $user], key($user->id)) --}}
+                        
                     </div>
-                @empty
-            
-                @endforelse
+                </div>
             </div>
-        </div>
-    @empty
+        @empty
+    </div>
                 
     @endforelse
 </div>

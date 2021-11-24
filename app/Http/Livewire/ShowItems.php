@@ -7,9 +7,10 @@ use Livewire\Component;
 
 class ShowItems extends Component
 {
-    protected $listeners = ['updateItems' => 'render'];
 
     public $trip;
+
+    protected $listeners = ['updateItems' => 'render'];
 
     public function mount(Request $request)
     {
@@ -22,8 +23,14 @@ class ShowItems extends Component
             'livewire.show-items',
 
             [
-                'categories' => $this->trip->categories
+                'categories' => $this->trip->categories,
+                'trip'       => $this->trip
+
             ]
         );
+    }
+
+    public function updated($name, $value)
+    {
     }
 }
